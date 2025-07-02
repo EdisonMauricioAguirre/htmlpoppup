@@ -1,0 +1,73 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth < 768) return; // Solo escritorio
+
+  const overlay = document.createElement("div");
+  overlay.id = "popup-super";
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100vw";
+  overlay.style.height = "100vh";
+  overlay.style.backgroundColor = "rgba(0,0,0,0.7)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = "2147483647";
+  overlay.style.overflow = "auto";
+
+  const popupBox = document.createElement("div");
+  popupBox.style.position = "relative";
+  popupBox.style.width = "535px";
+  popupBox.style.maxWidth = "95%";
+  popupBox.style.borderRadius = "10px";
+  popupBox.style.background = "#fff";
+  popupBox.style.boxShadow = "0 10px 30px rgba(0,0,0,0.4)";
+  popupBox.style.overflow = "hidden";
+  popupBox.style.zIndex = "2147483647";
+
+  const closeBtn = document.createElement("button");
+  closeBtn.innerHTML = "&times;";
+  closeBtn.style.position = "absolute";
+  closeBtn.style.top = "10px";
+  closeBtn.style.right = "10px";
+  closeBtn.style.fontSize = "24px";
+  closeBtn.style.background = "#fff";
+  closeBtn.style.border = "none";
+  closeBtn.style.borderRadius = "50%";
+  closeBtn.style.width = "32px";
+  closeBtn.style.height = "32px";
+  closeBtn.style.cursor = "pointer";
+  closeBtn.style.boxShadow = "0 0 5px rgba(0,0,0,0.3)";
+  closeBtn.style.zIndex = "2147483647";
+
+  const link = document.createElement("a");
+  link.href = "https://rebrand.ly/lshu1r1";
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+
+  const img = document.createElement("img");
+  img.src = "YOURIMAGE.JPG";
+  img.style.width = "100%";
+  img.style.height = "auto";
+  img.style.display = "block";
+
+  link.appendChild(img);
+
+  closeBtn.onclick = closePopup;
+  overlay.onclick = function (e) {
+    if (e.target === overlay) closePopup();
+  };
+
+  function closePopup() {
+    document.body.style.overflow = "";
+    overlay.remove();
+  }
+
+  popupBox.appendChild(closeBtn);
+  popupBox.appendChild(link);
+  overlay.appendChild(popupBox);
+  document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
+});
+</script>
